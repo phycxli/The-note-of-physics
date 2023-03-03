@@ -1,0 +1,92 @@
+\contentsline {part}{I\hspace {1em}拓扑绝缘体和拓扑超流体}{4}{part.1}%
+\contentsline {section}{\numberline {i}狄拉克方程}{4}{section.1}%
+\contentsline {subsection}{\numberline {1}狄拉克方程}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {2}束缚态解}{7}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {2.1}Jackiw-Rebbi的一维解}{7}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {2.2}二维系统}{10}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {2.3}三维和更高维}{12}{subsubsection.1.2.3}%
+\contentsline {subsection}{\numberline {3}为何不是狄拉克方程}{12}{subsection.1.3}%
+\contentsline {subsection}{\numberline {4}狄拉克方程的二次修正}{12}{subsection.1.4}%
+\contentsline {subsection}{\numberline {5}修正狄拉克方程的束缚态解}{13}{subsection.1.5}%
+\contentsline {subsection}{\numberline {6}一维：末端态}{13}{subsection.1.6}%
+\contentsline {subsubsection}{\numberline {6.1}二维：手征边缘态}{16}{subsubsection.1.6.1}%
+\contentsline {subsubsection}{\numberline {6.2}三维情况：表面态}{17}{subsubsection.1.6.2}%
+\contentsline {section}{\numberline {ii}拓扑绝缘体的最小晶格模型}{18}{section.2}%
+\contentsline {subsection}{\numberline {1}紧束缚近似}{18}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2}从连续到晶格系统}{23}{subsection.2.2}%
+\contentsline {subsection}{\numberline {3}一维晶格}{26}{subsection.2.3}%
+\contentsline {subsection}{\numberline {4}二维晶格模型}{30}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {4.1}整数霍尔效应}{30}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {4.2}量子自旋霍尔效应}{32}{subsubsection.2.4.2}%
+\contentsline {subsection}{\numberline {5}三维晶格模型}{33}{subsection.2.5}%
+\contentsline {subsection}{\numberline {6}时间反演不变动量点的宇称TRIM}{34}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {6.1}一维晶格}{34}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {6.2}二维模型}{35}{subsubsection.2.6.2}%
+\contentsline {subsubsection}{\numberline {6.3}三维晶格}{36}{subsubsection.2.6.3}%
+\contentsline {section}{\numberline {iii}拓扑不变量}{36}{section.3}%
+\contentsline {subsection}{\numberline {1}布洛赫理论}{36}{subsection.3.1}%
+\contentsline {subsection}{\numberline {2}Berry相位}{37}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3}绝热输运计算量子霍尔电导和Chern数}{40}{subsection.3.3}%
+\contentsline {subsection}{\numberline {4}拓扑平带计算霍尔电导和Chern数}{45}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {4.1}流算符}{45}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {4.2}连续方程得到流算符}{46}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {4.3}Peierls替换得到流算符}{47}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {4.4}外场下的线性响应}{50}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {4.5}涨落耗散定理}{52}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {4.6}有限温度格林函数}{55}{subsubsection.3.4.6}%
+\contentsline {subsubsection}{\numberline {4.7}电流-电流关联函数和电导}{56}{subsubsection.3.4.7}%
+\contentsline {subsubsection}{\numberline {4.8}霍尔电导的计算}{58}{subsubsection.3.4.8}%
+\contentsline {subsubsection}{\numberline {4.9}哈密顿对角化以及平带基}{59}{subsubsection.3.4.9}%
+\contentsline {subsection}{\numberline {5}循环绝热演化中的极化强度}{68}{subsection.3.5}%
+\contentsline {subsection}{\numberline {6}Thouless电荷泵}{70}{subsection.3.6}%
+\contentsline {subsection}{\numberline {7}Fu-Kane泵浦}{72}{subsection.3.7}%
+\contentsline {subsection}{\numberline {8}整数霍尔效应：Laughlin argument}{74}{subsection.3.8}%
+\contentsline {subsection}{\numberline {9}时间反演算符}{75}{subsection.3.9}%
+\contentsline {subsection}{\numberline {10}时间反演对称和$Z_2$指标}{79}{subsection.3.10}%
+\contentsline {subsection}{\numberline {11}二维或三维的推广}{84}{subsection.3.11}%
+\contentsline {subsection}{\numberline {12}修正狄拉克方程的相图}{85}{subsection.3.12}%
+\contentsline {section}{\numberline {iv}一维拓扑相}{89}{section.4}%
+\contentsline {subsection}{\numberline {1}SSH模型}{89}{subsection.4.1}%
+\contentsline {subsection}{\numberline {2}非厄米SSH}{94}{subsection.4.2}%
+\contentsline {subsection}{\numberline {3}拓扑铁磁物质}{94}{subsection.4.3}%
+\contentsline {section}{\numberline {v}1-D/2-D拓扑超流}{94}{section.5}%
+\contentsline {subsection}{\numberline {1}p波超导}{94}{subsection.5.1}%
+\contentsline {subsection}{\numberline {2}一维p波超导}{96}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {2.1}1-D p波超导}{96}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {2.2}2-D p+ip波超导}{96}{subsubsection.5.2.2}%
+\contentsline {subsection}{\numberline {3}一般超流配对}{96}{subsection.5.3}%
+\contentsline {part}{II\hspace {1em}拓扑分类}{101}{part.2}%
+\contentsline {section}{\numberline {vi}对称性}{101}{section.6}%
+\contentsline {subsection}{\numberline {1}时间反演对称}{102}{subsection.6.1}%
+\contentsline {subsection}{\numberline {2}粒子-空穴对称PHS}{103}{subsection.6.2}%
+\contentsline {subsection}{\numberline {3}手征对称性/子格对称性}{104}{subsection.6.3}%
+\contentsline {subsection}{\numberline {4}BdG系统}{105}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {4.1}Class D}{105}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {4.2}Class DIII}{107}{subsubsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {4.3}Class A和AIII}{108}{subsubsection.6.4.3}%
+\contentsline {subsubsection}{\numberline {4.4}Class C和Class CI}{109}{subsubsection.6.4.4}%
+\contentsline {subsection}{\numberline {5}十重对称类}{110}{subsection.6.5}%
+\contentsline {section}{\numberline {vii}完全有能隙的自由费米子系统和拓扑缺陷}{112}{section.7}%
+\contentsline {subsection}{\numberline {1}有能隙的自由费米子系统和拓扑缺陷的十重对称类}{112}{subsection.7.1}%
+\contentsline {subsubsection}{\numberline {1.1}有能隙的自由费米子系统}{112}{subsubsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {1.2}拓扑缺陷}{114}{subsubsection.7.1.2}%
+\contentsline {subsection}{\numberline {2}拓扑不变量}{115}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {2.1}$s$为偶数的奇系：Chern数}{116}{subsubsection.7.2.1}%
+\contentsline {paragraph}{\numberline {a}例子：二维Class A量子反常霍尔效应}{117}{paragraph.7.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.2}s为奇数的基础系：缠绕数}{120}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {2.3}s为奇数的基础系：Chern-Simons}{121}{subsubsection.7.2.3}%
+\contentsline {paragraph}{\numberline {a}例子：一维Class AIII聚合物}{122}{paragraph.7.2.3.1}%
+\contentsline {paragraph}{\numberline {b}3维Class DIII：$^3He-B$}{125}{paragraph.7.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.4}s为偶数的第一代$Z_2$}{128}{subsubsection.7.2.4}%
+\contentsline {paragraph}{\numberline {a}一维Class D}{128}{paragraph.7.2.4.1}%
+\contentsline {paragraph}{\numberline {b}Class D的Kitaev链}{129}{paragraph.7.2.4.2}%
+\contentsline {paragraph}{\numberline {c}三维Class AII}{130}{paragraph.7.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.5}s为偶的第二代$Z_2$}{131}{subsubsection.7.2.5}%
+\contentsline {paragraph}{\numberline {a}2维Class AII}{131}{paragraph.7.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.6}s为奇数的第一代$\mathbb {Z}_2$}{131}{subsubsection.7.2.6}%
+\contentsline {paragraph}{\numberline {a}二维Class DIII}{132}{paragraph.7.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.7}对于s为奇数的第二代$Z_2$}{133}{subsubsection.7.2.7}%
+\contentsline {paragraph}{\numberline {a}一维Class DIII}{133}{paragraph.7.2.7.1}%
+\contentsline {subsection}{\numberline {3}K理论}{134}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {3.1}狄拉克质量隙的同伦分类}{134}{subsubsection.7.3.1}%
+\contentsline {paragraph}{\numberline {a}d=2,d=1中的Class A}{135}{paragraph.7.3.1.1}%

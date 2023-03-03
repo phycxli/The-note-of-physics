@@ -1,0 +1,403 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{amsthm}
+\geometry{left=2.0cm,right=2.0cm,top=2.5cm,bottom=2.5cm}
+\begin{document}
+    \title{科普文之直和与直乘}
+    \author{李成蹊\\Institute of Physics, Chinese Academy of Sciences}
+    \date{}
+    \maketitle
+    \abstract{最近计算狄拉克方程、泡利矩阵、分析乱七八糟拓扑分类搞得的心烦，遂在此把相关矩阵运算公式整理一下。虽然这都是大一的内容，但舍己为人是吾辈之使命。}
+    \section{直和}
+    给定两个向量空间$V,W$，维数分别是$n,m$。$V$里有一组向量基底$\left\{\vec{e}_{1}, \vec{e}_{2}, \cdots, \vec{e}_{n}\right\}$，同样$W$里也有一组基底$\left\{\vec{f}_{1}, \vec{f}_{2}, \cdots, \vec{f}_{m}\right\}$.我们现在定义$n+m$个向量构成基组$\left\{\vec{e}_{1}, \cdots, \vec{e}_{n}, \vec{f}_{1}, \cdots, \vec{f}_{m}\right\}$. 由这些基组生成的线性空间叫做$V$与$W$生成的直和空间$V\oplus W$，线性空间维数为$n+m$.\\
+    任意向量$\vec{v} \in V$都可以写成基底线性叠加的形式$\vec{v}=v_{1} \vec{e}_{1}+v_{2} \vec{e}_{2}+\cdots+v_{n} \vec{e}_{n}$. 线性代数里我们可以用这些叠加系数构成的列向量来代表这个向量。
+    \begin{equation}
+        \left.\vec{v}=\left(\begin{array}{c}
+            v_{1} \\
+            v_{2} \\
+            \vdots \\
+            v_{n}
+            \end{array}\right)\right\} n
+    \end{equation}
+    值得注意，这个列向量是线性空间$V$的一个元素，列向量有$n$个分量。特别地，向量基底可以写成
+    \begin{equation}
+        \vec{e}_{1}=\left(\begin{array}{c}
+            1 \\
+            0 \\
+            \vdots \\
+            0
+            \end{array}\right), \quad \vec{e}_{2}=\left(\begin{array}{c}
+            0 \\
+            1 \\
+            \vdots \\
+            0
+            \end{array}\right)_{V}, \quad \cdots, \quad \vec{e}_{n}=\left(\begin{array}{c}
+            0 \\
+            0 \\
+            \vdots \\
+            1
+            \end{array}\right)_{V}
+    \end{equation}
+    若基组是正交组，$\vec{e}_{i} \cdot \vec{e}_{j}=\delta_{i j}$，则有$v_i=\vec{e}_i\cdot\vec{v}$.同样对于$w$中的任意向量也可以有
+    \begin{equation}
+        \left.\vec{w}=\left(\begin{array}{c}
+            w_{1} \\
+            w_{2} \\
+            \vdots \\
+            w_{n}
+            \end{array}\right)\right\} m
+    \end{equation}
+    基向量为
+    \begin{equation}
+        \vec{f}_{1}=\left(\begin{array}{c}
+            1 \\
+            0 \\
+            \vdots \\
+            0
+            \end{array}\right)_{W}, \quad \vec{f}_{2}=\left(\begin{array}{c}
+            0 \\
+            1 \\
+            \vdots \\
+            0
+            \end{array}\right)_{W}, \quad \cdots, \quad \vec{f}_{m}=\left(\begin{array}{c}
+            0 \\
+            0 \\
+            \vdots \\
+            1
+            \end{array}\right)_{W}
+    \end{equation}
+    自然地，对于元素$\vec{v}\in V$和$\vec{w}\in W$在直和空间的列向量形式可以推广成
+    \begin{equation}
+        \left.\left.\vec{v}=\left(\begin{array}{c}
+            v_{1} \\
+            \vdots \\
+            v_{n} \\
+            \hline 0 \\
+            \vdots \\
+            0
+            \end{array}\right)\right\} n+m, \quad \vec{w}=\left(\begin{array}{c}
+            0 \\
+            \vdots \\
+            0 \\
+            w_{1} \\
+            \vdots \\
+            w_{m}
+            \end{array}\right)\right\} n+m
+    \end{equation}
+    可以看到，只是把其余部分用0填充。\\
+    我们也可以定义两个非零向量的直和
+    \begin{equation}
+        \left.\vec{v} \oplus \vec{w}=\left(\begin{array}{c}
+            v_{1} \\
+            \vdots \\
+            v_{n} \\
+            \hline w_{1} \\
+            \vdots \\
+            w_{m}
+            \end{array}\right)=\left(\frac{\vec{v}}{\vec{w}}\right)\right\} n+m
+    \end{equation}
+    数学上矩阵表示一个线性空间到另一个线性空间的映射。这里我们只讨论一个$V\mapsto V$的特殊情况，因为量子力学里大部分情况便是如此。力学量$A:V\mapsto V$
+    \begin{equation}
+        \vec{v}\mapsto A\vec{v}
+    \end{equation}
+    \begin{equation}
+        \left(\begin{array}{c}
+            v_{1} \\
+            v_{2} \\
+            \vdots \\
+            v_{n}
+            \end{array}\right) \longmapsto\left(\begin{array}{cccc}
+            a_{11} & a_{12} & \cdots & a_{1 n} \\
+            a_{22} & a_{22} & \cdots & a_{2 n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n 1} & a_{n 2} & \cdots & a_{n n}
+            \end{array}\right)_{V}\left(\begin{array}{c}
+            v_{1} \\
+            v_{2} \\
+            \vdots \\
+            v_{n}
+            \end{array}\right)_{V}
+    \end{equation}
+    类似的有矩阵$B:W\mapsto W,\vec{w}\mapsto B\vec{w}$\\
+    在直和空间里，我们希望矩阵$A,B$经过某种运算后作用在向量上保持$\vec{v}\mapsto A\vec{v}$和$\vec{w}\mapsto B\vec{w}$。这样的运算记成$A\oplus B$. 运算结果可以利用分块对角矩阵构造
+    \begin{equation}
+        A \oplus B=\left(\begin{array}{c|c}
+            A & 0_{n \times m} \\
+            \hline 0_{m \times n} & B
+            \end{array}\right)
+    \end{equation}
+    例如$n=2,m=3$的情况
+    \begin{equation}
+        A=\left(\begin{array}{cc}
+            a_{11} & a_{12} \\
+            a_{21} & a_{22}
+            \end{array}\right)_{V}, \quad B=\left(\begin{array}{ccc}
+            b_{11} & b_{12} & b_{13} \\
+            b_{21} & b_{22} & b_{23} \\
+            b_{31} & b_{32} & b_{33}
+            \end{array}\right)_{W}
+    \end{equation}
+    他们的直和为
+    \begin{equation}
+        A \oplus B=\left(\begin{array}{cc|ccc}
+            a_{11} & a_{12} & 0 & 0 & 0 \\
+            a_{21} & a_{22} & 0 & 0 & 0 \\
+            \hline 0 & 0 & b_{11} & b_{12} & b_{13} \\
+            0 & 0 & b_{21} & b_{22} & b_{23} \\
+            0 & 0 & b_{31} & b_{32} & b_{33}
+            \end{array}\right)
+    \end{equation}
+    显然$A,B$分别作用在不同的子空间里。显然直和矩阵$A\oplus B$作用在直和向量$\vec{v} \oplus \vec{w}$为
+    \begin{equation}
+        (A \oplus B)(\vec{v} \oplus \vec{w})=\left(\begin{array}{c|c}
+            A & 0_{n \times m} \\
+            \hline 0_{m \times n} & B
+            \end{array}\right)\left(\frac{\vec{v}}{\vec{w}}\right)=\left(\frac{A \vec{v}}{B \vec{w}}\right)=(A \vec{v}) \oplus(B \vec{w})
+    \end{equation}
+    若有两个直和矩阵相乘，利用对角矩阵运算显然得到
+    \begin{equation}
+        \left(A_{1} \oplus B_{1}\right)\left(A_{2} \oplus B_{2}\right)=\left(A_{1} A_{2}\right) \oplus\left(B_{1} B_{2}\right)
+    \end{equation}
+    直和空间$V\oplus W$一共有$(n+m)^2$个线性无关矩阵，而子空间$V$和$W$分别只有$n^2,m^2$个线性无关矩阵，这说明并不是所有在直和空间中的矩阵都能表示成直和形式。\\
+    利用分块矩阵行列式规则显然得到
+    \begin{equation}
+        \operatorname{det}(A \oplus B)=(\operatorname{det} A)(\operatorname{det} B)
+    \end{equation}
+    分块矩阵求迹得到的是各个子块的迹之和
+    \begin{equation}
+        \operatorname{Tr}(A \oplus B)=(\operatorname{Tr} A)+(\operatorname{Tr} B)
+    \end{equation}
+    \section{直积}
+    直积这个词在有些书上叫张量积、Kronecker积
+
+    和之前一样，给定两个线性空间$V,W$,分别$n,m$维. $V$中有一组基底$\left\{\vec{e}_{1}, \vec{e}_{2}, \cdots, \vec{e}_{n}\right\}$，$W$中也有一组基底$\left\{\vec{f}_{1}, \vec{f}_{2}, \cdots, \vec{f}_{m}\right\}$.我们现在定义$nm$个基向量$\vec{e}_{i} \otimes \vec{f}_{j}$,其中$i=1,\cdots,n$和$j=1,\cdots,m$.$\otimes$具体运算下面将会讲明，可以看到$\vec{e}_i\otimes\vec{e}_j$有两个指标，这也是为什么直积也叫张量积的原因。
+
+    张量积是双线性的，即在$V$中是线性的，在$W$中也是线性的. 如果有多于两个线性空间，则叫多重线性的。这意味着$\vec{v} \otimes \vec{w}=\left(\sum_{i}^{n} v_{i} \vec{e}_{i}\right) \otimes\left(\sum_{j}^{m} w_{j} \vec{f}_{j}\right)=\sum_{i}^{n} \sum_{j}^{m} v_{i} w_{j}\left(\vec{e}_{i} \otimes \vec{f}_{j}\right)$. 换句话说由向量基底$\vec{e}_i\otimes\vec{f}_i$生成的线性空间$V\otimes W$中的向量由这组基$\vec{v}_i\otimes\vec{w}_j$线性表出，系数为$v_iw_j$
+
+    一种使它非常明确的方法是把它写出来。例如假设$n=2,m=3$。张量积空间的维数为$nm=6$新的基底分别是$\vec{e}_{1} \otimes \vec{f}_{1}, \vec{e}_{1} \otimes \vec{f}_{2}, \vec{e}_{1} \otimes \vec{f}_{3}, \vec{e}_{2} \otimes \vec{f}_{1}, \vec{e}_{2} \otimes \vec{f}_{2}, \vec{e}_{2} \otimes \vec{f}_{3}$. 写出这6个基底对应的列向量
+    \begin{equation}
+        \begin{split}
+            &\vec{e}_{1} \otimes \vec{f}_{1}=\left(\begin{array}{c}
+                1 \\
+                0 \\
+                0 \\
+                \hline 0 \\
+                0 \\
+                0
+                \end{array}\right), \quad \vec{e}_{1} \otimes \vec{f}_{2}=\left(\begin{array}{c}
+                0 \\
+                1 \\
+                0 \\
+                0 \\
+                0 \\
+                0
+                \end{array}\right), \quad \vec{e}_{1} \otimes \vec{f}_{3}=\left(\begin{array}{c}
+                0 \\
+                0 \\
+                1 \\
+                \hline 0 \\
+                0 \\
+                0
+                \end{array}\right)\\
+                &\vec{e}_{2} \otimes \vec{f}_{1}=\left(\begin{array}{c}
+                    0 \\
+                    0 \\
+                    0 \\
+                    \hline 1 \\
+                    0 \\
+                    0
+                    \end{array}\right), \quad \vec{e}_{2} \otimes \vec{f}_{2}=\left(\begin{array}{c}
+                    0 \\
+                    0 \\
+                    0 \\
+                    \hline 0 \\
+                    1 \\
+                    0
+                    \end{array}\right), \quad \vec{e}_{2} \otimes \vec{f}_{3}=\left(\begin{array}{c}
+                    0 \\
+                    0 \\
+                    0 \\
+                    \hline 0 \\
+                    0 \\
+                    1
+                    \end{array}\right)
+        \end{split}
+    \end{equation}
+    这里横线把基向量分割成了两个不同的子集，第一部分由$\vec{e}_1$生成，第二部分由$\vec{e}_2$生成。对于一般的向量$\vec{v}\in V,\vec{w}\in W$，张量积为
+    \begin{equation}
+        \vec{v} \otimes \vec{w}=\left(\begin{array}{l}
+            v_{1} w_{1} \\
+            v_{1} w_{2} \\
+            v_{1} w_{3} \\
+            \hline v_{2} w_{1} \\
+            v_{2} w_{2} \\
+            v_{2} w_{3}
+            \end{array}\right)
+    \end{equation}
+    在数学上矩阵是一个线性空间到另一个线性空间的线性映射。同样的我们只关注量子力学感兴趣的$A:V\mapsto V$
+    \begin{equation}
+        \vec{v} \longmapsto A \vec{v}
+    \end{equation}
+    或者说
+    \begin{equation}
+        \left(\begin{array}{c}
+            v_{1} \\
+            v_{2} \\
+            \vdots \\
+            v_{n}
+            \end{array}\right) \longmapsto\left(\begin{array}{cccc}
+            a_{11} & a_{12} & \cdots & a_{1 n} \\
+            a_{22} & a_{22} & \cdots & a_{2 n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n 1} & a_{n 2} & \cdots & a_{n n}
+            \end{array}\right)\left(\begin{array}{c}
+            v_{1} \\
+            v_{2} \\
+            \vdots \\
+            v_{n}
+            \end{array}\right)_{V}
+    \end{equation}
+    在张量积空间上，相同的矩阵仍然可以作用在矢量上，使得$\vec{v} \mapsto A \vec{v}$但$\vec{w} \mapsto \vec{w}$保持不变。这个矩阵可以写成$A\otimes I$，其中$I$是恒等矩阵。在之前的$n=2,m=3$例子里，矩阵$A$是$2\times2$维矩阵，显然$A\otimes I$是$6\times6$维矩阵
+    \begin{equation}
+        A \otimes I=\left(\begin{array}{ccc|ccc}
+            a_{11} & 0 & 0 & a_{12} & 0 & 0 \\
+            0 & a_{11} & 0 & 0 & a_{12} & 0 \\
+            0 & 0 & a_{11} & 0 & 0 & a_{12} \\
+            \hline a_{21} & 0 & 0 & a_{22} & 0 & 0 \\
+            0 & a_{21} & 0 & 0 & a_{22} & 0 \\
+            0 & 0 & a_{21} & 0 & 0 & a_{22}
+            \end{array}\right)
+    \end{equation}
+    把这个矩阵作用在$\vec{v}\otimes\vec{w}$上就知道了之所以这样构造的原因
+    \begin{equation}
+        \begin{aligned}
+            (A \otimes I)(\vec{v} \otimes \vec{w}) &=\left(\begin{array}{ccc|ccc}
+            a_{11} & 0 & 0 & a_{12} & 0 & 0 \\
+            0 & a_{11} & 0 & 0 & a_{12} & 0 \\
+            0 & 0 & a_{11} & 0 & 0 & a_{12} \\
+            \hline a_{21} & 0 & 0 & a_{22} & 0 & 0 \\
+            0 & a_{21} & 0 & 0 & a_{22} & 0 \\
+            0 & 0 & a_{21} & 0 & 0 & a_{22}
+            \end{array}\right)\left(\begin{array}{c}
+            v_{1} w_{1} \\
+            v_{1} w_{2} \\
+            v_{1} w_{3} \\
+            \hline v_{2} w_{1} \\
+            v_{2} w_{2} \\
+            v_{2} w_{3}
+            \end{array}\right) \\
+            =&\left(\begin{array}{c}
+            \left(a_{11} v_{1}+a_{12} v_{2}\right) w_{1} \\
+            \left(a_{11} v_{1}+a_{12} v_{2}\right) w_{2} \\
+            \left(a_{11} v_{1}+a_{12} v_{2}\right) w_{3} \\
+            \hline\left(a_{21} v_{1}+a_{22} v_{2}\right) w_{1} \\
+            \left(a_{21} v_{1}+a_{22} v_{2}\right) w_{2} \\
+            \left(a_{21} v_{1}+a_{22} v_{2}\right) w_{3}
+            \end{array}\right) &=(A \vec{v}) \otimes \vec{w}
+            \end{aligned}
+    \end{equation}
+    显然矩阵$A$仅仅只作用在$\vec{v}\in V$上并且保持$\vec{w}\in W$不变。
+
+    类似的对于矩阵$B:W\mapsto W$, $\vec{w}\mapsto B\vec{w}$. 同样的也能用$I\otimes B$作用在$V\otimes W$中的矢量。其中
+    \begin{equation}
+        I \otimes B=\left(\begin{array}{ccc|ccc}
+            b_{11} & b_{12} & b_{13} & 0 & 0 & 0 \\
+            b_{21} & b_{22} & b_{23} & 0 & 0 & 0 \\
+            b_{31} & b_{32} & b_{33} & 0 & 0 & 0 \\
+            \hline 0 & 0 & 0 & b_{11} & b_{12} & b_{13} \\
+            0 & 0 & 0 & b_{21} & b_{22} & b_{23} \\
+            0 & 0 & 0 & b_{31} & b_{32} & b_{33}
+            \end{array}\right)
+    \end{equation}
+    作用在$\vec{v}\otimes\vec{w}$为
+    \begin{equation}
+        \begin{aligned}
+            (I \otimes B)(\vec{v} \otimes \vec{w}) &=\left(\begin{array}{ccc|ccc}
+            b_{11} & b_{12} & b_{13} & 0 & 0 & 0 \\
+            b_{21} & b_{22} & b_{23} & 0 & 0 & 0 \\
+            b_{31} & b_{32} & b_{33} & 0 & 0 & 0 \\
+            \hline 0 & 0 & 0 & b_{11} & b_{12} & b_{13} \\
+            0 & 0 & 0 & b_{21} & b_{22} & b_{23} \\
+            0 & 0 & 0 & b_{31} & b_{32} & b_{33}
+            \end{array}\right)\left(\begin{array}{c}
+            v_{1} w_{1} \\
+            v_{1} w_{2} \\
+            v_{1} w_{3} \\
+            \hline v_{2} w_{1} \\
+            v_{2} w_{2} \\
+            v_{2} w_{3}
+            \end{array}\right) \\
+            =&\left(\begin{array}{c}
+            v_{1}\left(b_{11} w_{1}+b_{12} w_{2}+b_{13} w_{3}\right) \\
+            v_{1}\left(b_{21} w_{1}+b_{22} w_{2}+b_{23} w_{3}\right) \\
+            v_{1}\left(b_{31} w_{1}+b_{32} w_{2}+b_{33} w_{3}\right) \\
+            \hline v_{2}\left(b_{11} w_{1}+b_{12} w_{2}+b_{13} w_{3}\right) \\
+            v_{2}\left(b_{21} w_{1}+b_{22} w_{2}+b_{23} w_{3}\right) \\
+            v_{2}\left(b_{31} w_{1}+b_{32} w_{2}+b_{33} w_{3}\right)
+            \end{array}\right) &=\vec{v} \otimes(B \vec{w})
+            \end{aligned}
+    \end{equation}
+    一般而言
+    \begin{equation}
+        \begin{split}
+            (A \otimes I)(\vec{v} \otimes \vec{w})&=(A \vec{v}) \otimes \vec{w}\\
+            (I \otimes B)(\vec{v} \otimes \vec{w})&=\vec{v} \otimes(B \vec{w})
+        \end{split}
+    \end{equation}
+    利用上面式子很容易证明下列式子
+    \begin{equation}
+        \begin{array}{l}
+            \left(A_{1} \otimes I\right)\left(A_{2} \otimes I\right)=\left(A_{1} A_{2}\right) \otimes I \\
+            \left(I \otimes B_{1}\right)\left(I \otimes B_{2}\right)=I \otimes\left(B_{1} B_{2}\right) \\
+            \left(A_{1} \otimes B_{1}\right)\left(A_{2} \otimes B_{2}\right)=\left(A_{1}A_{2}\right) \otimes\left(B_{1} B_{2}\right) \\
+            (A \otimes I)(I \otimes B)=(I \otimes B)(A \otimes I)=(A \otimes B)
+            \end{array}
+    \end{equation}
+    \begin{proof}
+        \begin{equation}
+            (A_1\otimes I)(A_2\otimes I)(\vec{v}\otimes\vec{w})=(A_1\otimes I)(A_2\vec{v}\otimes\vec{w})=(A_1A_2\vec{v}\otimes\vec{w})=((A_1 A_2)\otimes I)(\vec{v}\otimes\vec{w})
+        \end{equation}
+        第二三式类似证明，不再赘述
+        \begin{equation}
+            (A\otimes I)(I\otimes B)(\vec{v}\otimes\vec{w})=(A\otimes I)(v\otimes B\vec{w})=(A\vec{v})\otimes(B\vec{w})=(A\otimes B)(\vec{v}\otimes\vec{w})=(I \otimes B)(A \otimes I)(\vec{v}\otimes\vec{w})
+        \end{equation}
+    \end{proof}
+    最后一式定义了$A\otimes B$，也可以写出矩阵形式
+    \begin{equation}
+        \begin{split}
+        A \otimes B&=(A\otimes I)(I\otimes B)\\
+        &=\left(\begin{array}{ccc|ccc}
+            a_{11} & 0 & 0 & a_{12} & 0 & 0 \\
+            0 & a_{11} & 0 & 0 & a_{12} & 0 \\
+            0 & 0 & a_{11} & 0 & 0 & a_{12} \\
+            \hline a_{21} & 0 & 0 & a_{22} & 0 & 0 \\
+            0 & a_{21} & 0 & 0 & a_{22} & 0 \\
+            0 & 0 & a_{21} & 0 & 0 & a_{22}
+            \end{array}\right)\left(\begin{array}{ccc|ccc}
+                b_{11} & b_{12} & b_{13} & 0 & 0 & 0 \\
+                b_{21} & b_{22} & b_{23} & 0 & 0 & 0 \\
+                b_{31} & b_{32} & b_{33} & 0 & 0 & 0 \\
+                \hline 0 & 0 & 0 & b_{11} & b_{12} & b_{13} \\
+                0 & 0 & 0 & b_{21} & b_{22} & b_{23} \\
+                0 & 0 & 0 & b_{31} & b_{32} & b_{33}
+                \end{array}\right)\\
+                &=\left(\begin{array}{ccc|ccc}
+            a_{11} b_{11} & a_{11} b_{12} & a_{11} b_{13} & a_{12} b_{11} & a_{12} b_{12} & a_{12} b_{13} \\
+            a_{11} b_{21} & a_{11} b_{22} & a_{11} b_{23} & a_{12} b_{21} & a_{12} b_{22} & a_{12} b_{23} \\
+            a_{11} b_{31} & a_{11} b_{32} & a_{11} b_{33} & a_{12} b_{31} & a_{12} b_{32} & a_{12} b_{33} \\
+            \hline a_{21} b_{11} & a_{21} b_{12} & a_{21} b_{13} & a_{22} b_{11} & a_{22} b_{12} & a_{22} b_{13} \\
+            a_{21} b_{21} & a_{21} b_{22} & a_{21} b_{23} & a_{22} b_{21} & a_{22} b_{22} & a_{22} b_{23} \\
+            a_{21} b_{31} & a_{21} b_{32} & a_{21} b_{33} & a_{22} b_{31} & a_{22} b_{32} & a_{22} b_{33}
+            \end{array}\right)
+        \end{split}
+    \end{equation}
+值得注意，张量积空间中不是所有矩阵都能写成两个子空间矩阵张量积的形式。此外还有两个常用公式
+\begin{equation}
+    \begin{array}{l}
+        \operatorname{det}(A \otimes B)=(\operatorname{det} A)^{m}(\operatorname{det} B)^{n} \\
+        \operatorname{Tr}(A \otimes B)=(\operatorname{Tr} A)(\operatorname{Tr} B)
+        \end{array}
+\end{equation}
+\end{document}

@@ -1,0 +1,180 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{left=1.5cm,right=1.5cm,top=2.5cm,bottom=2.5cm}
+
+\newtheorem{definition}{\hspace{2em}定义}[section]
+\newtheorem{theorem}{\hspace{2em}定理}[section]
+\newtheorem{lemma}{\hspace{2em}引理}[section]
+\newtheorem{proof}{证明}[section]
+\newtheorem{example}{例}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{hypothesis}{假设}[section]
+\newtheorem{property}{性质}[section]
+\newtheorem{problem}{问题}[section]
+\newtheorem{formula}{公式}[section]
+
+\begin{document}
+    \title{复数矩阵的对角化方法——Jordan标准型}
+    \author{李成蹊\\中科院物理所}
+    \maketitle
+    \abstract{我们知道，如果矩阵能相似与对角矩阵，肯定会给理论和实际应用带来不少方便。可惜的是，不是所有方阵都能相似与对角矩阵。对于复数矩阵在实数域上甚至不能实对角化，而在物理上我们经常遇到复数矩阵对角化问题。}
+    \section{多项式矩阵、$\lambda-$矩阵}
+    \begin{definition}
+        如果矩阵中每个元素都是$\lambda$的多项式，则称该矩阵为$\lambda-$矩阵
+    \end{definition}
+    例如
+    \begin{equation*}
+        A(\lambda)=\begin{bmatrix}
+            2\lambda^2-3\lambda&\lambda-2&0\\
+            \lambda^2-\lambda+1&2&\lambda^3
+        \end{bmatrix}
+    \end{equation*}
+    这是一个$2\times 3$的$\lambda-$矩阵.
+
+    元素全是数的矩阵叫做数元矩阵，数元矩阵可以看成特殊的多项式矩阵。
+    \begin{definition}
+        定义多项式矩阵下列三种初等变换
+        \begin{enumerate}
+            \item 非零数$k$乘$A(\lambda)$的某行(列)；
+            \item 将$A(\lambda)$的某行(列)的$g(\lambda)$倍加到另一行(列)，其中$g(\lambda)$是$\lambda$的多项式；
+            \item 互换$A(\lambda)$的两行(列)。
+        \end{enumerate}
+    \end{definition}
+    类似于数元矩阵的倍法变换、消法变换、换法变换。这里要注意两点：倍法变换的$k$必须是非零常数，而不能是其他；消法变换的$g(\lambda)$是多项式，不是能是分式。
+    \begin{definition}
+        设$A(\lambda)$金额$B(\lambda)$是两个同型的多项式矩阵，如果$A(\lambda)$可以经过有限次初等变换到$B(\lambda)$，则说$A(\lambda)$与$B(\lambda)$等价，记作$A(\lambda)\cong B(\lambda)$
+    \end{definition}
+    对于$n$阶数元矩阵$A$特征矩阵$\lambda E-A$是一个特定的多项式矩阵。这里不加证明给出如下结果
+    \begin{theorem}
+        对于$n$阶数元矩阵$A$，总有
+        \begin{equation*}
+            \lambda E-A\cong G(\lambda)=\begin{bmatrix}
+                g_1(\lambda)&\quad&\quad&\quad\\
+                \quad&g_2(\lambda)&\quad&\quad\\
+                \quad&\quad&\cdots&\quad\\
+                \quad&\quad&\quad&g_n(\lambda)
+            \end{bmatrix}
+        \end{equation*}
+        其中$g_1(\lambda),g_2(\lambda),\cdots,g_n(\lambda)$都是首项系数为$1$的多项式，并且
+        \begin{equation*}
+            |\lambda E-A|=g_1(\lambda)g_2(\lambda)\cdots g_n(\lambda)
+        \end{equation*}
+    \end{theorem}
+    $\lambda E-A$经过有限次初等变换得到$G(\lambda)$，根据初等变换对矩阵相应行列式值的影响，可知$G(\lambda)$与$|\lambda E-A|$最多相差非零常数倍。注意到$|G(\lambda)|$与$|\lambda E-A|$的值表达式都是首项系数为$1$的多项式，所以上式成立。
+    \begin{definition}
+        对于$n$阶数元矩阵$A$，设$\lambda E-A$经初等变换化为对角矩阵$G(\lambda)$。将$g_1(\lambda),g_2(\lambda),\cdots,g_n(\lambda)$中的每个非常数多项式做复数域上的标准分解，各个分解式中的每一个一次因式方幂称为$A$的一个初等因子，初等因子的全体称为$A$的初等因子组。
+    \end{definition}
+    例如对于$5$阶数元矩阵$A$
+    \begin{equation*}
+        \lambda E-A\cong\begin{bmatrix}
+            1&\quad&\quad&\quad&\quad\\
+            \quad&1&\quad&\quad&\quad\\
+            \quad&\quad&\lambda(\lambda-1)&\quad&\quad\\
+            \quad&\quad&\quad&1&\quad\\
+            \quad&\quad&\quad&\quad&\lambda(\lambda-1)^2
+        \end{bmatrix}
+    \end{equation*}
+    $A$的初等因子组为：$\lambda,\lambda-1,\lambda,(\lambda-1)^2$
+    注意三点
+    \begin{enumerate}
+        \item 方阵$A$的所有初等因子的乘积就是$A$的特征多项式
+        \item 每个初等因子都和矩阵$A$的某个特征值相应，即如果$(\lambda-\lambda_i)^{m_i}$是$A$的一个初等因子，则$\lambda_i$一定是$A$的一个特征值
+        \item $n$阶方阵$A$的所有初等因子幂次之和为$n$
+    \end{enumerate}
+    方阵$A$与某一个特征值对应的初等因子未必只有一个，所以一般不能从$A$的特征多形式的标准分解式$\psi(\lambda)=(\lambda-\lambda_1)^{n_1}(\lambda-\lambda_2)^{n_2}\cdots(\lambda-\lambda_t)^{n_t}$直接得到初等因子组为$(\lambda-\lambda_1)^{n_1},\cdots,(\lambda-\lambda_t)^{n_t}$.
+
+    在不计各初等因子相互次序的意义下，给定方阵$A$的初等因子组是唯一的，不会因为$\lambda E-A$所化成的对角矩阵不同而有所改变。
+    \section{矩阵的Jordan标准型}
+    \begin{theorem}
+        在复数域上，如果$n$阶矩阵$A$的全部初等因子为
+        \begin{equation*}
+            (\lambda-\lambda_1)^{m_1},(\lambda-\lambda_2)^{m_2},\cdots,(\lambda-\lambda_s)^{m_s}
+        \end{equation*}
+        则有
+        \begin{equation*}
+            A\sim J=\begin{bmatrix}
+                J_1&\quad&\quad&\quad\\
+                \quad&J_2&\quad&\quad\\
+                \quad&\quad&\cdots&\quad\\
+                \quad&\quad&\quad&J_s
+            \end{bmatrix}
+        \end{equation*}
+        其中
+        \begin{equation*}
+            J_i=\begin{bmatrix}
+                \lambda_i&1&\quad&\quad&\quad\\
+                \quad&\lambda_i&1&\quad&\quad\\
+                \quad&\quad&\cdots&\cdots&\quad\\
+                \quad&\quad&\quad&\cdots&1\\
+                \quad&\quad&\quad&\quad&\lambda_i
+            \end{bmatrix}_{m_i\times m_i},i=1,2,\cdots,s
+        \end{equation*}
+    \end{theorem}
+    该定理中的分块对角矩阵$J$称为矩阵$A$的Jordan标准型，称为Jordan型。Jordan型中各个子块$J_i$叫做Jordan块。每个Jordan块$J_i$恰好与$A$的一个初等因子$(\lambda-\lambda_i)^{m_i}$相对应。
+
+    例如之前的$5$阶数元矩阵，初等因子组为$\lambda,\lambda-1,\lambda,(\lambda-1)^2$，对应的Jordan块
+    \begin{equation*}
+        J_1=(0),J_2=(1),J_3=(0),J_4=\begin{bmatrix}
+            1&1\\
+            0&1
+        \end{bmatrix}
+    \end{equation*}
+    所以对应的Jordan标准型为
+    \begin{equation*}
+        J=\begin{bmatrix}
+            0&\quad&\quad&\quad&\quad\\
+            \quad&1&\quad&\quad&\quad\\
+            \quad&\quad&0&\quad&\quad\\
+            \quad&\quad&\quad&1&1\\
+            \quad&\quad&\quad&\quad&1
+        \end{bmatrix}
+    \end{equation*}
+    \begin{enumerate}
+        \item 对于给定的方阵$A$，在不计各Jordan块排列次序的意义下，$A$的Jordan标准型是唯一的；
+        \item 方阵$A$的Jordan标准型$J$是上三角矩阵，主对角线上元素恰好是$A$的全部特征值
+        \item 对角矩阵本身是Jordan型，每一个主对角元都是一阶Jordan块。
+    \end{enumerate}
+    \begin{theorem}
+        两个同阶方阵相似的充要条件是他们的Jordan形一致(不计Jordan块次序).
+    \end{theorem}
+    \begin{theorem}
+        矩阵$A$能与对角矩阵相似的充分必要条件是它的初等因子全为一次式。
+    \end{theorem}
+    利用Jordan标准型可以得到下列推论
+    \begin{theorem}
+        如果$n$阶矩阵$A$的全部特征值是$\lambda_1,\lambda_2,\cdots,\lambda_n$，则矩阵$A^m$的全部特征值恰是$\lambda_1^m,\lambda_2^m,\cdots,\lambda_n^m$.(这里$\lambda_1,\lambda_2,\cdots,\lambda_n$可以有一些相同的数)
+    \end{theorem}
+    \begin{proof}
+        设$A$的Jordan标准形为
+        \begin{equation*}
+            J=\begin{bmatrix}
+                J_1&\quad&\quad&\quad\\
+                \quad&J_2&\quad&\quad\\
+                \quad&\quad&\cdots&\quad\\
+                \quad&\quad&\quad&\quad&J_s
+            \end{bmatrix}=\begin{bmatrix}
+                \lambda_1&*&\quad&\quad&\quad\\
+                \quad&\lambda_2&*&\quad&\quad\\
+                \quad&\quad&\cdots&\cdots&\quad\\
+                \quad&\quad&\quad&\cdots&*\\
+                \quad&\quad&\quad&\quad&\lambda_n
+            \end{bmatrix}
+        \end{equation*}
+        $A\sim J\Rightarrow A^m\sim J^m$. 利用上三角矩阵计算得到
+        \begin{equation*}
+            \begin{bmatrix}
+                \lambda_1^m&*&*&\cdots&*\\
+                \quad&\lambda_2^m&*&\cdots&*\\
+                \quad&\quad&\cdots&\cdots&\cdots\\
+                \quad&\quad&\quad&\cdots&*\\
+                \quad&\quad&\quad&\quad&\lambda_n^m
+            \end{bmatrix}
+        \end{equation*}
+        $J^m$是上三角矩阵，全部特征值就是对角元$\lambda_1,\lambda_2,\cdots,\lambda_n$. 这也就是$A^m$的全部特征值.
+    \end{proof}
+    \begin{theorem}(Frobeius定理)
+        设$n$阶矩阵$A$全部特征值为$\lambda_1,\lambda_2,\cdots,\lambda_n$，则对任意多项式$f(\lambda)$，矩阵$f(A)$的全部特征值恰是$f(\lambda_1),f(\lambda_2),\cdots,f(\lambda_n)$
+    \end{theorem}
+\end{document} 

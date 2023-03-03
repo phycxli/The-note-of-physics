@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[UTF8]{ctex}
+
+\newcommand{\md}{\mathrm{d}}
+
+\begin{document}
+\title{冷原子自旋轨道耦合}
+\author{LCX}
+\maketitle
+\section{绘景变换}
+设有两个绘景, 薛定谔方程分别为
+\begin{equation*}
+  i\hbar\frac{\md}{\md t}|\psi\rangle=H|\psi\rangle,\quad i\hbar\frac{\md}{\md t}|\psi'\rangle=H'|\psi'\rangle
+\end{equation*}
+设$|\psi\rangle=U|\psi'\rangle$, $|\psi'\rangle=U^\dag|\psi\rangle$, $U$为待选, 则
+\begin{equation*}
+  \begin{split}
+     i\hbar\frac{\md}{\md t}|\psi'\rangle&=i\hbar\frac{\md}{\md t}(U^\dag|\psi\rangle \\
+       &=i\hbar\left(\frac{\md U^\dag}{\md t}|\psi\rangle+U^\dag\frac{\md |psi\rangle}{\md t}\right) \\
+       &=i\hbar\frac{\md U^\dag}{\md t}|\psi\rangle+U^\dag H|\psi\rangle\\
+       &=i\hbar\frac{\md U^\dag}{\md t}U|\psi'\rangle+U^\dag HU|\psi'\rangle\\
+       &=\left(i\hbar\frac{\md U^\dag}{\md t}U+U^\dag HU\right)|\psi'\rangle\\
+       &=H'|\psi'\rangle
+  \end{split}
+\end{equation*}
+绘景变换:$H'=i\hbar\frac{\md U^\dag}{\md t}U+U^\dag HU$
+\section{单模电磁场与二能级原子相互作用}
+考虑一个二能级系统, 基态和激发态分别是$|a\rangle,|b\rangle$, 对应的能量分别为$\hbar \omega_a,\hbar \omega_b$, 原子自由部分哈密顿为
+\begin{equation*}
+  H_0=\hbar\omega_a|a\rangle\langle a|+\hbar\omega_b|b\rangle\langle b|=\hbar\omega_a\sigma_{aa}+\hbar\omega_b\sigma_{bb}
+\end{equation*}
+原子的尺度一般是$10^{-10}m$数量级, 相比而言，可见光的波长在$400\sim700nm$，在这个尺度下$r\ll\lambda$. 在原子的尺度范围内，光场可以看成均匀的电磁场，相互作用可以取电偶极近似。相互作用哈密顿写成
+\begin{equation*}
+  V=-\mathbf{d}\cdot\mathbf{E}=e\mathbf{r}\cdot\mathbf{E}
+\end{equation*}
+这里电子电荷取为$-e$.
+利用完备性关系$\sum_{k}|k\rangle\langle k|=1$
+\begin{equation*}
+  \begin{split}
+     V&=-\mathbf{E}\cdot\sum_{ij}|i\rangle\langle i|\mathbf{d}|j\rangle\langle j|\\
+       &=-e\mathbf{E}\cdot\sum_{ij}\langle i|\mathbf{r}|j\rangle|i\rangle\langle j|
+  \end{split}
+\end{equation*}
+由于对称性, $\langle i|\mathbf{r}|i\rangle=0$
+二能级系统的哈密顿写成
+\begin{equation*}
+  H=H_0+V
+\end{equation*}
+\begin{equation*}
+  \begin{split}
+     V&=-\mathbf{d}\cdot\mathbf{E}\\
+       &=-\mathbf{d}\cdot\mathbf{E_0}cos(\omega t+\varphi)\\
+       &=-\mathbf{\mu}\cdot\mathbf{E_0}cos(\omega t+\varphi)(|a\rangle\langle b|+|b\rangle\langle a|)\\
+       &=-\frac{\mathbf{\mu}\cdot\mathbf{E_0}}{2}(\sigma^++\sigma^-)(e^{\omega t+\varphi}+e^{-i(\omega t+\varphi)})
+  \end{split}
+\end{equation*}
+其中$\sigma^+=|b\rangle\langle a|,\sigma^-=|a\rangle\langle b|$
+
+相互作用绘景$U=e^{-\frac{i}{\hbar}H_0 t}=e^{-i(\omega_a|a\rangle\langle a|+\omega_b|b\rangle\langle b|)}$
+\begin{equation*}
+  U^\dag\sigma^+U=\sigma^+e^{i\omega_{ba}t},\quad U^\dag\sigma^-U=\sigma^-e^{-i\omega_{ba}t}
+\end{equation*}
+其中$\omega_{ba}=\omega_b-\omega_a$
+
+相互作用绘景下，相互作用哈密顿为
+\begin{equation*}
+  \begin{split}
+     V_I&=-\frac{\mathbf{\mu}\cdot E_0}{2}(\sigma^+e^{i\omega_{ba}t}+\sigma^-e^{-i\omega_{ba}t})(e^{i(\omega t+\varphi)}+e^{-i(\omega t+\varphi)})\\
+       &=-\frac{\mathbf{\mu}\cdot E_0}{2}(\sigma^+(e^{i[(\omega_{ba}+\omega)t+\varphi]}+e^{i[(\omega_{ba}-\omega)t-\varphi]})+\sigma^-e^{-i[(\omega_{ba}-\omega)t-\varphi]}+\sigma^-e^{-i[(\omega_{ba}+\omega)t+\varphi]})
+  \end{split}
+\end{equation*}
+旋转波近似，丢弃高频项。
+\begin{equation*}
+  V_I=-\frac{\hbar\Omega}{2}(e^{-i\varphi}\sigma^+e^{i\Delta t}+e^{i\varphi}\sigma^-e^{-i\Delta t})
+\end{equation*}
+\end{document} 

@@ -1,0 +1,182 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage[UTF8]{ctex}
+\usepackage{tikz}
+\usepackage{tikz-feynman}
+\usepackage{theorem}
+\usepackage{geometry}
+\usepackage{simplewick}
+
+\geometry{a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm}
+
+\newtheorem{proof}{答案}[section]
+
+\begin{document}
+\title{Peskin的答案}
+\author{李成蹊\\中科院物理所}
+\date{}
+\maketitle
+\begin{abstract}
+    大家好，我叫小李哥，从小到大，我就思考什么是好书？随着年龄增长，我越来越认识到有题有答案就是好书！我是中国人，我的答案不是给外国人看的，我只想给我亲爱的中国同胞们看。希望我的中国人同胞们在物理上能更进一步。我的答案是个小学生也能看懂，无比详细。
+\end{abstract}
+\section{相互作用场和费曼图}
+\subsection{经典源的微扰}
+让我们回到经典源产生K-G粒子的问题上来。回顾第二章，这个过程可以用哈密顿
+\begin{equation}
+    H=H_0+\int d^3x(-j(t,\mathbf{x})\phi(x))
+\end{equation}
+来描述，其中$H_0$是K-G自由哈密顿，$\phi(x)$是K-G场，并且$j(x)$是$c$数标量函数。我们发现，如果系统在源打开之前处于真空态，源将产生平均数量
+\begin{equation}
+    \langle N\rangle=\int \frac{d^3p}{(2\pi)^3}\frac{1}{2E_{\mathbf{p}}}|\tilde{j}(p)|^2
+\end{equation}
+的粒子。在这个问题中，我们将通过在源的强度上使用微扰展开来验证这一说法，并提取更详细的信息。
+\begin{enumerate}
+    \item 证明源不产生粒子的概率为
+    \begin{equation}
+        P(0)=|\langle 0|T\left\{\exp[i\int d^4xj(x)\phi_I(x)]\right\}|0\rangle|^2
+    \end{equation}
+    \begin{proof}
+        所谓源不产生粒子，意味着前后初末态，粒子数并没有发生任何变化。我们又知道，\textbf{系统在源打开之前处于真空态}。所以前后初末态，系统都在真空态。我们知道在相互作用表象里，时间演化算符为
+        \begin{equation}
+            U(t-t_0)=T[e^{-i\int_{t_0}^t dt' H(t')}]
+        \end{equation}
+        所以这里我们如果把经典源项看成微扰$H_I=\int d^3x(-j(t,\mathbf{x})\phi_I(x))$，问题就变得简单多了。我们考虑真空态$|0\rangle$从无穷过去开始演化到无穷未来，这个态演化成了
+        \begin{equation}
+            T[e^{-i\int_{-\infty}^{+\infty} dt H_I(t)}]|0\rangle
+        \end{equation}
+        剩下就简单多了，往无穷过去的初态真空投影内积即可得到概率振幅：
+        \begin{equation}
+            \langle 0|T[e^{-i\int_{-\infty}^{+\infty} dt H_I(t)}]|0\rangle=\langle 0|T[e^{i\int_{-\infty}^{+\infty} d^4 x j(x)\phi_I(x)}]|0\rangle
+        \end{equation}
+        $P(0)=|\langle 0|T[e^{i\int_{-\infty}^{+\infty} d^4 x j(x)\phi_I(x)}]|0\rangle|^2$得证
+    \end{proof}
+    \item 计算到$j^2$项的$P(0)$，并且证明$P(0)=1-\lambda+\mathcal{O}(j^4)$，其中$\lambda$表示$\langle N\rangle$.
+    \begin{proof}
+        泰勒级数$e^x=1+x+\frac{x^2}{2!}+\cdots$，得到
+        \begin{equation}
+            e^{i\int d^4x j(x)\phi_I(x)}=1+i\int d^4 x j(x)\phi_I(x)+\frac{1}{2!}\left(i\int d^4 xj(x)\phi_I(x)\right)\left(i\int d^4 yj(y)\phi_I(y)\right)+\cdots
+        \end{equation}
+        考虑到$\langle 0|\phi_I(x)|0\rangle=0$，我们有
+        \begin{equation}
+            \begin{split}
+                \langle 0|T\exp[i\int d^4x j(x)\phi_I(x)]|0\rangle&=1-\frac{1}{2}\langle 0|T\{\int d^4xj(x)\phi_I(x)\int d^4y j(y)\phi_I(y)\}|0\rangle+\mathcal{O}(j^4)\\
+                &=1-\frac{1}{2}\int d^4xd^4yj(x)j(y)\langle 0|T\{\phi_I(x)\phi_I(y)\}|0\rangle+\mathcal{O}(j^4)\\
+                &=1-\frac{1}{2}\int d^4xd^4yj(x)j(y)D(x-y)+\mathcal{O}(j^4)\\
+                &=1-\frac{1}{2}\int d^4xd^4yj(x)j(y)\int \frac{d^3p}{(2\pi)^3}\frac{1}{2E_{\mathbf{p}}}e^{-ip\cdot(x-y)}+\mathcal{O}(j^4)\\
+                &=1-\frac{1}{2}\int \frac{d^3p}{(2\pi)^3}\frac{1}{2E_{\mathbf{p}}}|\tilde{j}(p)|^2+\mathcal{O}(j^4)
+            \end{split}
+        \end{equation}
+        所以$\langle 0|T\exp[i\int d^4xj(x)\phi_I(x)]|0\rangle=1-\frac{\lambda}{2}+\mathcal{O}(j^4)$，即$P(0)=|\langle 0|T\exp[i\int d^4xj(x)\phi_I(x)]|0\rangle|^2=1-\lambda+\mathcal{O}(j^4)$
+    \end{proof}
+    \item 将上小题部分中计算的项表示为费曼图。现在用费曼图表示$P(0)$的整个微扰级数。证明这个级数是指数的，因此可以精确地求和：$P(0)=e^{-\lambda}$
+    \begin{proof}
+        首先我们计算$\langle 0|T\exp[i\int d^4xj(x)\phi_I(x)]|0\rangle$首次项，得到
+        \begin{equation}
+            \langle 0|T\exp[i\int d^4x j(x)\phi_I(x)]|0\rangle=1-\frac{\lambda}{2}
+        \end{equation}
+        所以我们可以得到费曼规则：
+        \begin{tikzpicture}
+            \begin{feynman}
+                \vertex (a1) {\(x\)};
+                \vertex [right=2cm of a1] (a2) {\(y\)};
+                \diagram*{
+                    (a1) -- [scalar] (a2);
+                };
+            \end{feynman}
+        \end{tikzpicture}$=-\lambda$
+
+        例如计算$j^4$项的时候我们有
+        \begin{center}
+            \begin{tikzpicture}
+                \begin{feynman}
+                    \vertex (a1) {\(x\)};
+                    \vertex [right=2cm of a1] (a2) {\(y\)};
+                    \vertex [below=1cm of a1] (a3) {\(z\)};
+                    \vertex [right=2cm of a3] (a4) {\(w\)};
+                    \diagram*{
+                        (a1) -- [scalar] (a2);
+                        (a3) -- [scalar] (a4);
+                    };
+                \end{feynman}
+            \end{tikzpicture}$+$
+            \begin{tikzpicture}
+                \begin{feynman}
+                    \vertex (a1) {\(x\)};
+                    \vertex [right=1cm of a1] (a2) {\(y\)};
+                    \vertex [below=2cm of a1] (a3) {\(z\)};
+                    \vertex [right=1cm of a3] (a4) {\(w\)};
+                    \diagram*{
+                        (a1) -- [scalar] (a3);
+                        (a2) -- [scalar] (a4);
+                    };
+                \end{feynman}
+            \end{tikzpicture}$+$
+            \begin{tikzpicture}
+                \begin{feynman}
+                    \vertex (a1) {\(x\)};
+                    \vertex [right=2cm of a1] (a2) {\(y\)};
+                    \vertex [below=1cm of a1] (a3) {\(z\)};
+                    \vertex [right=2cm of a3] (a4) {\(w\)};
+                    \diagram*{
+                        (a1) -- [scalar] (a4);
+                        (a2) -- [scalar] (a3);
+                    };
+                \end{feynman}
+            \end{tikzpicture}$=3(-\lambda)^2$
+        \end{center}
+        同样的我们考虑第$2n$项得到
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[dashed] (-1,0)node[left]{\(x_1\)} -- (1,0)node[right]{\(x_2\)};
+                \draw[dashed] (-1,-1)node[left]{\(x_3\)} -- (1,-1)node[right]{\(x_4\)};
+                \node (t) at (0,-2.5) {\(\cdots\)};
+                \draw[dashed] (-1,-2)node[left]{\(x_5\)} -- (1,-2)node[right]{\(x_6\)};
+            \end{tikzpicture}$=(2n-1)!!(-\lambda)^n$
+        \end{center}
+        其中由于对称性，对称重复计算的对称因子为$(2n-1)!!$. 所以总的跃迁振幅为
+        \begin{equation}
+            \langle 0|T\exp[i\int d^4x j(x)\phi_I(x)]|0\rangle=1-\frac{1}{2!}\lambda+\frac{1}{4!}3\lambda+\cdots+\frac{1}{(2n)!}(2n-1)!!(-\lambda)^n=\sum_{n=0}\frac{(-\frac{\lambda}{2})^n}{n!}=e^{-\frac{\lambda}{2}}
+        \end{equation}
+        所以$P(0)=e^{-\lambda}$
+    \end{proof}
+    \item 计算源产生一个动量为k的粒子的概率。首先执行此计算到$\mathcal{O}(j)$，然后执行到所有阶，使用上式的技巧对级数求和。
+    \begin{proof}
+        我们考虑费曼规则
+        \begin{equation}
+            \begin{split}
+                \contraction{\langle}{k}{|}{\phi}\langle k|\phi(x)=\langle 0|a_k\sqrt{2E_k}\int\frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_p}}a_\mathbf{p}^\dagger e^{ip\cdot x}=\langle 0|e^{ik\cdot x}
+            \end{split}
+        \end{equation}
+        所以我们有
+        \begin{equation}
+            \langle k|i\int d^4j(x)\phi(x)|0\rangle=i\int d^4x j(x)e^{ik\cdot x}=i\tilde{j}(p)
+        \end{equation}
+        \begin{equation}
+            \contraction{}{\phi}{(x)}{\phi}\phi(x)\phi(y)=D_F(x-y)=\int\frac{d^4p}{(2\pi)^4}\frac{i}{p^2-m^2+i\epsilon}e^{-ip\cdot (x-y)}
+        \end{equation}
+        所以我们有
+        \begin{equation}
+            \begin{split}
+                \contraction[1.5em]{i\int d^4xj(x)}{\phi}{(x)i\int d^4yj(y)}{\phi}i\int d^4xj(x)\phi(x)i\int d^4y j(y)\phi(y)&=-\int d^4xd^4y j(x)j(y)D_F(x-y)\\
+                &=-\int\frac{d^3p}{(2\pi)^3}\frac{|\tilde{j}(p)|^2}{2E_\mathbf{p}}=-\lambda
+            \end{split}
+        \end{equation}
+        考虑$\langle k|T\exp[i\int d^4x j(x)\phi_I(x)]|0\rangle$展开，由于偶数次展开项加上末态湮灭算符一共有奇数个场算符，值为$0$. 所以只存在奇数次展开式，考虑第$2n+1$次展开
+        \begin{equation}
+            \alpha_{2n+1}=\frac{1}{(2n+1)!}\times(2n+1)!!(-\lambda)^n\times i\tilde{j}(p)=\frac{i}{(2n)!!}(-\lambda)^n\tilde{j}(p)=\frac{i}{n!}(-\frac{\lambda}{2})^n\tilde{j}(p)
+        \end{equation}
+        所以$P(k)=|i\sum_{n}\frac{(-\lambda/2)^n}{n!}\tilde{j}(p)|^2=|\tilde{j}(p)|^2e^{-\lambda}$
+    \end{proof}
+    \item 证明产生n个粒子的概率为$P(n)=\frac{1}{n!}\lambda^n e^{-\lambda}$. 这就是Poisson分布。
+    \begin{proof}
+        我们考虑跃迁振幅$\langle k_1k_2\cdots k_n|T e^{i\int d^4x j(x)\phi(x)}|0\rangle$. 我们考虑对上式微扰展开，考虑第$n$阶微扰项(从这一项开始，微扰非$0$).
+        \begin{equation}
+            \begin{split}
+                \alpha_n&=\frac{1}{n!}\langle k_1k_2\cdots k_n|T\left\{\left(i\int d^4x_1 j(x_1)\phi(x_1)\right)\cdots\left(i\int d^4x_n j(x_n)\phi(x_n)\right)\right\}|0\rangle\\
+                &=\frac{i^n}{n!}
+            \end{split}
+        \end{equation}
+    \end{proof}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,165 @@
+\documentclass{book}
+\usepackage{amsmath}
+\usepackage[UTF8]{ctex}
+\usepackage{indentfirst}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage{cite}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{layout}
+\usepackage{geometry}
+\usepackage{tikz,mathpazo}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=red,citecolor=green]{hyperref}
+\newtheorem{definition}{\hspace{2em}定义}[section]
+\newtheorem{theorem}{\hspace{2em}定理}[section]
+\newtheorem{lemma}{\hspace{2em}引理}[section]
+\newtheorem{proof}{证明}[section]
+\newtheorem{example}{例}[section]
+\newtheorem{corollary}{推论}[section]
+\begin{document}
+\title{玻色爱因斯坦凝聚读书笔记}
+\author{大白菜}
+\date{2018-1-15}
+\maketitle
+\tableofcontents
+\chapter{玻色爱因斯坦凝聚的基础}
+\section{全同粒子的不可区辩性}
+全同粒子不可分辨性在量子统计里占据了主导的地位. 整数(半整数)自旋粒子($\hbar$的整数或半整数倍)叫做玻色子(费米子). 玻色子服从Bose-Einstein统计, Bose-Einstein统计对单粒子占据数没有要求. 费米子服从Fermi-Dirac统计, Fermi-Dirac统计要求单粒子态只能占据一个粒子. 全同玻色子(费米子)的多体波函数在交换任意两个单粒子时一定是对称的. 对称性急剧的减少了系统可行的量子态数目, 在低温下导致了高度非经典的现象.
+为了理解这点, 假设我们通过求解薛定谔方程得到一个二粒子系统的波函数$\Phi(\xi_1,\xi_2)$, 其中$\xi_1$和$\xi_2$代表二粒子的空间坐标和可能的自旋坐标. 对于理想玻色子(费米子), 对称(反对称)波函数为
+\begin{equation}
+  \Psi(\xi_1,\xi_2)=\frac{1}{\sqrt{2}}[\Phi(\xi_1,\xi_2)\pm\Phi(\xi_2,\xi_1)]
+\end{equation}
+其中加号(减号)对应的是玻色子(费米子). 两个粒子在$\xi_1,\xi_2$处的联合概率为
+\begin{equation}\label{The joint probability}
+  |\Psi(\xi_1,\xi_2)|^2=\frac{1}{2}\{|\Phi(\xi_1,\xi_2)|^2+|\Phi(\xi_2,\xi_1)|^2\pm2\mathrm{Re}[\Phi^*(\xi_1,\xi_2)\Phi(\xi_2,\xi_1)]\}
+\end{equation}
+其中$\mathrm{Re}$表示实部. 由于方程(\eqref{The joint probability})中的最后一项是干涉项, 在相同坐标找到两个全同玻色子的概率$|\Psi(\xi,\xi)|^2$是$|\Phi(\xi,\xi)|^2$的两倍, $|\Phi(\xi,\xi)|^2$是可分辨粒子对应在相同点找到的概率. 相反地, 对于费米子, $|\Psi(\xi,\xi)|^2$趋于$0$(Pauli不相容原理).
+
+当玻色子数目变得足够大时, 玻色子这样的一个集体效应变得越来越明显. 对于$N$粒子玻色系统, 对称波函数是
+\begin{equation}\label{The symmetrized wave function}
+  \Psi(\xi_1,\xi_2,\cdots,\xi_N)=\frac{1}{\sqrt{N!}}\sum_{(i_1,i_2,\cdots,i_N)}\Phi(\xi_{i_1},\xi_{i_2},\cdots,\xi_{i_N})
+\end{equation}
+其中求和遍历所有的$i_1,i_2,\cdots,i_N$的排列$N!$. 在相同坐标找到所有$N$个粒子的联合概率是可分辨玻色子概率$|\Phi(\xi,\xi,\cdots,\xi)|^2$的$N!$倍.
+\begin{equation}\label{N! enhance}
+  |\Psi(\xi,\xi,\cdots,\xi)|^2=N!|\Phi(\xi,\xi,\cdots,\xi)|^2
+\end{equation}
+只有当玻色子的波包相互交叠的时候, 这个概率振幅的干涉项才是有效的. 在温度为$T$时, 每一个波包有一个空间宽度\footnote{$\Delta p\sim
+p\sim\sqrt{ME}=\sqrt{Mk_BT},\Delta x\Delta p\sim\hbar/\sqrt{Mk_BT}$}$\Delta x\sim\hbar/\sqrt{Mk_BT}$, 其中$M$是玻色子的质量, $k_B$是玻尔兹曼常数. 通过让$\Delta x$等于粒子间的平均距离$n^{-\frac{1}{3}}$, 我们能估计Bose-Einstein凝聚的相变温度$T_0$, 其中$n$是粒子数密度
+\begin{equation}\label{Transition temperature T0 of BEC1}
+  k_BT_0\sim\frac{\hbar^2}{M}n^{\frac{2}{3}}
+\end{equation}
+在方程(\eqref{N! enhance})中, 由于$N!$倍的增强, 低于$T_0$时大量的粒子数凝聚在单粒子态上. 当$N$是一个宏观的数量时, 这种凝聚开始变得突出, 赋予了$BEC$一个明显的量子相变特征. 用$n=N/V$替换(\eqref{Transition temperature T0 of BEC1})得到
+\begin{equation}\label{Transition temperature T0 of BEC2}
+  k_BT_0\sim\frac{\hbar^2}{MV^{\frac{2}{3}}}N^{\frac{2}{3}}
+\end{equation}
+其中$V$是系统的体积, 而$\hbar^2/(MV^{\frac{2}{3}})$给了基态和第一激发态的带隙. 低于$T_{cl}\sim\hbar^2(k_BMV^{\frac{2}{3}})$经典粒子将会凝聚在基态. 方程(\eqref{Transition temperature T0 of BEC2})展示了BEC发生在一个相当高的温度; 进一步说, 这个大的倍数因子$N^{\frac{2}{3}}$可归功于之前讨论的干扰项.
+\section{均匀系统中的理想玻色气体}
+粒子系统的巨配分函数$\Xi$可以用哈密顿算符$\hat{H}$和粒子数算符$\hat{N}$表示成
+\begin{equation}\label{The Grand Partition function}
+  \Xi=\mathrm{Tr}e^{-\beta(\hat{H}-\mu\hat{N})}
+\end{equation}
+其中$\beta=1/(k_BT)$, $\mathrm{Tr}$表示求迹, 化学势$\mu$作为拉格朗日乘子, 由粒子的平均值确定
+
+对于理想的全同玻色子, 色散关系为$\epsilon_\mathbf{k}=\frac{\hbar^2\mathbf{k}^2}{2M}$
+\begin{equation}\label{H-muN}
+  \hat{H}-\mu\hat{N}=\sum_{\mathbf{k}}(\epsilon_{\mathbf{k}}-\mu)\hat{n_{\mathbf{k}}}
+\end{equation}
+其中$\hat{n_{\mathbf{k}}}$表示波矢为$\mathbf{k}$的粒子数算符. 把\eqref{H-muN}代入\eqref{The Grand Partition function}得到
+\begin{equation}\label{The Grand Partition function2}
+  \begin{split}
+     \Xi & =\mathrm{Tr}e^{-\beta\sum_{\mathbf{k}'}(\epsilon_{\mathbf{k}'}-\mu)\hat{n}_\mathbf{k}'} \\
+       & =\sum_{n_\mathrm{k}=0}^{\infty}\langle n_\mathbf{k}|e^{-\beta\sum_{\mathbf{k}'}}(\epsilon_\mathbf{k}'-\mu)\hat{n}_\mathbf{k}'|n_\mathbf{k}\rangle \\
+       & =\sum_{n_\mathrm{k}=0}^{\infty}\prod_{\mathrm{k}}e^{-\beta(\epsilon_\mathrm{k}-\mu)n_\mathbf{k}}
+  \end{split}
+\end{equation}
+方程(\eqref{The Grand Partition function2}是一个几何级数, 收敛条件为$e^{-\beta(\epsilon_\mathrm{k}-\mu)}<1$. 由于$\epsilon_\mathrm{k}\geq0$, 可知
+\begin{equation}
+  \mu<0
+\end{equation}
+这样方程\eqref{The Grand Partition function2}可以计算出结果
+\begin{equation*}
+  \Xi=\prod_{\mathrm{k}}\frac{1}{1-e^{\beta(\mu-\epsilon_\mathrm{k})}}
+\end{equation*}
+由巨配分函数可以计算出巨热力势
+\begin{equation}\label{1.2 thermodynamic potential}
+  \Omega=-\frac{1}{\beta}ln\Xi=\frac{1}{\beta}\sum_{\mathrm{k}}\ln(1-e^{\beta(\mu-\epsilon_\mathrm{k})})=\sum_{\mathrm{k}}\Omega_{\mathrm{k}}
+\end{equation}
+其中
+\begin{equation}\label{1.2 thermodynamic potential single}
+  \Omega_\mathrm{k}=\frac{1}{\beta}\ln(1-e^{\beta(\mu-\epsilon_\mathrm{k})})
+\end{equation}
+波矢为$\mathbf{k}$的粒子数\footnote{\begin{equation*}
+                               \begin{split}
+                                  dU & =TdS-pdV+\mu dn \\
+                                  dH & =TdS+Vdp+\mu dn \\
+                                  dF & =-SdT-pdV+\mu dn \\
+                                  dG & =-SdT+Vdp+\mu dn \\
+                                  d\Omega & =-SdT-pdV-n d\mu\\
+                                  \Omega & =F-\mu n=F-G=-pV
+                               \end{split}
+                             \end{equation*}}为
+\begin{equation}
+  \bar{n}_\mathbf{k}=-\frac{\partial\Omega_\mathbf{k}}{\partial\mu}=\frac{1}{e^{\beta(\epsilon_\mathbf{k}-\mu)}-1}
+\end{equation}
+这正是Bose-Einstein分布函数. 玻色子总数的平均值可以表示为
+\begin{equation}\label{1.2 Avg tot num}
+  N=\frac{1}{e^{\beta(\epsilon_\mathbf{k}-\mu)}-1}
+\end{equation}
+对于给定的$N$, $\mu$由满足上式(\eqref{1.2 Avg tot num})来决定.
+
+在$N,V\to\infty$, $N/V$保持不变的热力学极限下, 对$\mathbf{k}$的求和可以做下列替换
+\begin{equation}\label{1.2 integral replace}
+  \sum_{\mathbf{k}}\longmapsto\frac{V}{(2\pi)^3}\int d^3k
+\end{equation}
+方程(\eqref{1.2 Avg tot num})可表为
+\begin{equation}\label{1.2 N/V}
+  \frac{N}{V}=\frac{1}{(2\pi)^3}\int d^3k\frac{1}{e^{\beta(\epsilon_\mathbf{k}-\mu)}-1}
+\end{equation}
+当温度逐渐下降, 而$N/V$保持常数, $\mu$会逐渐增加最终在$T_0$点变为$0$. 将$\mu=0$和$\epsilon_\mathbf{k}$代入方程(\eqref{1.2 N/V})得到
+\begin{equation}\label{1.2 N/V yields}
+  \begin{split}
+     \frac{N}{V}&=\frac{(Mk_BT_0)^{3/2}}{\sqrt{2}\pi^2\hbar^3}\int_{0}^{\infty}\frac{\sqrt{x}}{e^x-1}dx \\
+       &=\zeta\left(\frac{3}{2}\right)\left(\frac{Mk_BT_0}{2\pi\hbar^2}\right)^{\frac{3}{2}}=2.612\left(\frac{Mk_BT_0}{2\pi\hbar^2}\right)^{\frac{3}{2}}
+  \end{split}
+\end{equation}
+其中$\zeta(x)$是黎曼zeta函数, 此外还用了下列公式
+\begin{equation}
+  \int_{0}^{\infty}\frac{x^{a-1}}{e^x-1}dx=\Gamma(a)\zeta(a),\quad\zeta\left(\frac{3}{2}\right)=2.612,\quad\Gamma\left(\frac{3}{2}\right)=\frac{\sqrt{\pi}}{2}
+\end{equation}
+根据方程\eqref{1.2 N/V yields}BEC相变点温度$T_0$为
+\begin{equation}
+  k_BT_0=\frac{2\pi}{\left[\zeta(3/2)\right]^{\frac{2}{3}}}\frac{\hbar^2}{M}\left(\frac{N}{V}\right)^{\frac{2}{3}}=3.31\frac{\hbar^2}{M}\left(\frac{N}{V}\right)^{\frac{2}{3}}
+\end{equation}
+这与方程(\eqref{Transition temperature T0 of BEC1})一致. 对于$T<T_0$, 玻色子的非零部分应该保持在基态, 凝聚在最低能量态上. 对于$T<T_0$情况, 替换(\eqref{1.2 integral replace})仅仅只能用于粒子能量为正数($\epsilon>0$)的那部分, 由于$\sqrt{x}$在被积函数分子上, 粒子能量为$0$($\epsilon=0$)的部分对积分没有任何贡献. 从方程(\eqref{1.2 N/V yields})我们可以看到, $T_0$依赖于粒子数密度$N/V$
+\begin{equation}\label{1.2 N/V relation}
+  \frac{N}{V}=\zeta\left(\frac{3}{2}\right)\left(\frac{Mk_BT_0}{2\pi\hbar^2}\right)^{\frac{3}{2}}
+\end{equation}
+对于$T<T_0$, 我们有
+\begin{equation}\label{1.2 T<T0}
+  \frac{N_{\epsilon>0}}{N}=\zeta\left(\frac{3}{2}\right)\left(\frac{Mk_BT}{2\pi\hbar^2}\right)^{\frac{3}{2}}
+\end{equation}
+从方程(\eqref{1.2 N/V relation})和(\eqref{1.2 T<T0})可以得到
+\begin{equation}
+  \frac{N_{\epsilon>0}}{N}=\left(\frac{T}{T_0}\right)^{\frac{3}{2}}
+\end{equation}
+这个值表示的是正常组分, 因此凝聚体组分是
+\begin{equation}
+  \frac{N_{\epsilon=0}}{N}=1-\left(\frac{T}{T_0}\right)^{\frac{3}{2}}
+\end{equation}
+BEC发生在玻色子的德布罗意波相互交叠的时候, 也就是说当量子简并发生的时候. 德布罗意热波长定义为
+\begin{equation}
+  k_BT=\frac{1}{2\pi M}\left(\frac{h}{\lambda_{th}}\right)^2\longmapsto\lambda_{th}=\frac{h}{\sqrt{2\pi Mk_BT}}
+\end{equation}
+这里$\lambda_{th}$表征单独的玻色子波包的空间延展. 将上式代入方程(\eqref{1.2 N/V relation})得到
+\begin{equation}\label{1.2 nlambda th}
+  n\lambda_{th}^3=\zeta\left(\frac{3}{2}\right)\simeq2.612,\quad T=T_0
+\end{equation}
+
+\end{document} 
